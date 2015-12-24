@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title>Website of YouthfulDrake</title>
+		
+<!--		<script src="bower-components/jquery/dist/jquery.min.js"></script>-->
+		<script src="jquery.min.js"></script>
+		<script src="index.js"></script>
+	</head>
+	<body>
+		<h1>Record storage</h1>
+		<h2>Submit new record</h2>
+		<div>
+			<div>
+				<label>Key:</label>
+				<input id="key" type="text" name="key"/>
+			</div>
+			<div>
+				<label>Value:</label>
+				<input id="value" type="text" name="value"/>
+			</div>
+			<button class="submit" onclick="submitData()">Submit</button>
+		</div>
+		<h2>Existing Records</h2>
+		<button onclick="refreshData()">Refresh</button>
+		<table>
+			<thead>
+				<tr>
+					<td>Key</td>
+					<td>Value</td>
+				</tr>
+			</thead>
+			<tbody id="container"></tbody>
+		</table>
+	</body>
+</html>

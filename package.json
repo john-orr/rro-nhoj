@@ -1,0 +1,26 @@
+{
+  "name": "rro-nhoj",
+  "version": "1.0.0",
+  "description": "Server nodejs app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/john-orr/rro-nhoj.git"
+  },
+  "author": "John Orr",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/john-orr/rro-nhoj/issues"
+  },
+  "homepage": "https://github.com/john-orr/rro-nhoj#readme",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "mongoose": "^4.3.4",
+    "request": "^2.67.0"
+  }
+}

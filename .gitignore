@@ -1,0 +1,9 @@
+#dependencies
+node_modules
+web/bower_components
+
+#logs
+npm-debug.log
+
+#other
+db actions
