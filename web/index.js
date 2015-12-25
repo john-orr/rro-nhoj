@@ -12,7 +12,12 @@ function submitData() {
 		"key":keyInput,
 		"value":valueInput
 	};
-	postData('submit', newRecord, function () {
+	postData('submit', newRecord, function (response) {
+		if (response.code === 0) {
+			showAlert('failureAlert');
+		} else if (response.code === 1) {
+			showAlert('submitSuccessAlert');
+		}
 		keyElement.val('');
 		valueElement.val('');
 		refreshData();
@@ -33,7 +38,12 @@ function refreshData() {
 
 function deleteRecord(id) {
 	console.log()
-	postData('delete', {"_id":id}, function () {
+	postData('delete', {"_id":id}, function (response) {
+		if (response.code === 0) {
+			showAlert('failureAlert');
+		} else if (response.code === 1) {
+			showAlert('deleteSuccessAlert');
+		}
 		refreshData();
 	});
 }
@@ -46,6 +56,19 @@ function postData(url, jsonObject, callback) {
 	xhr.send(JSON.stringify(jsonObject));
 	xhr.onloadend = function () {
 		console.log(`Response:${xhr.responseText}`);
-		callback();
+		callback(JSON.parse(xhr.responseText));
 	}
 }
+
+function showAlert(id) {
+	$('.alert').each(function () {
+		$(this).hide();
+	})
+	$(`#${id}`).show();
+}
+
+$(function(){
+    $("[data-hide]").on("click", function(){
+        $(this).closest("." + $(this).attr("data-hide")).hide();
+    });
+});

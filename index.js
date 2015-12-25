@@ -25,16 +25,16 @@ db.connection.on('connected', function () {
 			data.value = req.body.value;
 			data.save(function (err, record) {
 				if (err) {
-					console.log(`Failed to save.`);
-					res.send(`Failed to save.`);
+					console.log(`Failed to save:${err}`);
+					res.send({code:0,msg:`Save failed:${err}`});
 				} else {
 					console.log(`Saved successfully`);
-					res.send(`Saved successfully`);
+					res.send({code:1,msg:`Save successful:${record}`});
 				}
 			});
 		} else {
 			console.log(`Invalid data.`);
-			res.send(`Invalid data.`);
+			res.send({code:0,msg:`Invalid data:${req.body}`});
 		}
 	});
 	
@@ -49,10 +49,10 @@ db.connection.on('connected', function () {
 		Record.find(req.body).remove(function (err, response) {
 			if (err) {
 				console.log(`Error whie removing:${err}`);
-				res.send(`Error`);
+				res.send({code:0,msg:`Error while deleting:${err}`});
 			} else {
 				console.log(`Deleted. Response:${response}`);
-				res.send(`Delete successful`);
+				res.send({code:1,msg:`Delete successful:${response}`});
 			}
 		});
 	})
