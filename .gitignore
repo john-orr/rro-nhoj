@@ -1,6 +1,6 @@
 #dependencies
 node_modules
-web/bower_components
+web/bower-components
 
 #logs
 npm-debug.log
