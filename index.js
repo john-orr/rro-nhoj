@@ -17,7 +17,7 @@ db.connection.on('connected', function () {
 	});
 	var Record = mongoose.model('Record', schema);
 
-	app.post('/postData', function (req, res) {
+	app.post('/submit', function (req, res) {
 		console.log(JSON.stringify(req.body));
 		if (req.body.key && req.body.value) {
 			var data = new Record();
@@ -43,6 +43,19 @@ db.connection.on('connected', function () {
 			res.json(records);
 		})
 	});
+	
+	app.post('/delete', function (req, res) {
+		console.log(`Deleting:${JSON.stringify(req.body)}`);
+		Record.find(req.body).remove(function (err, response) {
+			if (err) {
+				console.log(`Error whie removing:${err}`);
+				res.send(`Error`);
+			} else {
+				console.log(`Deleted. Response:${response}`);
+				res.send(`Delete successful`);
+			}
+		});
+	})
 
 	app.listen(port);
 	console.log(`Listening on port: ${port}`);
