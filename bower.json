@@ -1,0 +1,24 @@
+{
+  "name": "rro-nhoj",
+  "description": "Server nodejs app",
+  "main": "index.js",
+  "authors": [
+    "John Orr"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/john-orr/rro-nhoj",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.6"
+  }
+}
