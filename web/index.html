@@ -3,32 +3,75 @@
 		<title>Website of YouthfulDrake</title>
 		
 		<script src="bower-components/jquery/dist/jquery.min.js"></script>
+		<script src="bower-components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="index.js"></script>
+<!--		css-->
+		<link rel="stylesheet" type="text/css" href="bower-components/bootstrap/dist/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="custom.css">
 	</head>
-	<body>
-		<h1>Record storage</h1>
-		<h2>Submit new record</h2>
-		<div>
-			<div>
-				<label>Key:</label>
-				<input id="key" type="text" name="key"/>
+	<body role="document">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Bootstrap theme</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+		<div class="container theme-showcase" role="main">
+			<div class="page-header">
+        <h1>Record storage</h1>
+      </div>
+			<h2>Submit new record</h2>
+			<div class="row col-md-4">
+				<div class="form-group col-md-6">
+					<label>Key:</label>
+					<input id="key" type="text" name="key"/>
+				</div>
+				<div class="form-group col-md-6">
+					<label>Value:</label>
+					<input id="value" type="text" name="value"/>
+				</div>
+				<button type="button" class="btn btn-success" onclick="submitData()">Submit</button>
 			</div>
-			<div>
-				<label>Value:</label>
-				<input id="value" type="text" name="value"/>
+			<div class="clearfix"></div>
+			<h2>Existing Records</h2>
+			<p><button type="button" class="btn btn-primary" onclick="refreshData()">Refresh</button></p>
+			<div class="col-md-6">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Key</th>
+							<th>Value</th>
+						</tr>
+					</thead>
+					<tbody id="container"></tbody>
+				</table>
 			</div>
-			<button class="submit" onclick="submitData()">Submit</button>
 		</div>
-		<h2>Existing Records</h2>
-		<button onclick="refreshData()">Refresh</button>
-		<table>
-			<thead>
-				<tr>
-					<td>Key</td>
-					<td>Value</td>
-				</tr>
-			</thead>
-			<tbody id="container"></tbody>
-		</table>
 	</body>
 </html>
