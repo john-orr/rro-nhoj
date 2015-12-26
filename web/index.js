@@ -32,8 +32,29 @@ function refreshData() {
 		target = $('#container');
 		target.empty();
 		records.forEach(function (record) {
-			target.append(`<tr><td>${record.key}</td><td>${record.value}</td><td><button type="button" class="btn btn-danger" onclick="deleteRecord('${record._id}')">Delete</button></td></tr>`);
+			target.append(`<tr><td>${record.key}</td><td>${record.value}</td><td><button type="button" class="btn btn-danger" onclick="deleteProcess('${record._id}')">Delete</button></td></tr>`);
 		});
+	});
+}
+
+function deleteProcess(id) {
+	BootstrapDialog.show({
+		title: 'Warning',
+		message: 'Are you sure you want to delete this record?',
+		type: BootstrapDialog.TYPE_WARNING,
+		buttons: [{
+			label: 'No, please cancel',
+			action: function (dialog){
+				dialog.close();
+			}
+		}, {
+			label: "Yes, I'm sure",
+			cssClass: 'btn-danger',
+			action: function (dialog) {
+				dialog.close();
+				deleteRecord(id);
+			}
+		}]
 	});
 }
 
