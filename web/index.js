@@ -6,6 +6,7 @@ $(document).ready(function () {
 })
 
 function submitData() {
+	showAlert('workingAlert');
 	keyInput = keyElement.val();
 	valueInput = valueElement.val();
 	newRecord = {
@@ -37,7 +38,7 @@ function refreshData() {
 }
 
 function deleteRecord(id) {
-	console.log()
+	showAlert('workingAlert');
 	postData('delete', {"_id":id}, function (response) {
 		if (response.code === 0) {
 			showAlert('failureAlert');
