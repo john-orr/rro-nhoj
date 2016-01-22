@@ -5,6 +5,7 @@
 		<script src="bower_components/jquery/dist/jquery.min.js"></script>
 		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="bower_components/bootstrap3-dialog/dist/js/bootstrap-dialog.js"></script>
+		<script src="bower_components/handlebars/handlebars.js"></script>
 		<script src="index.js"></script>
 <!--		css-->
 		<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
@@ -50,6 +51,10 @@
 					<button type="button" class="close" data-hide="alert">&times;</button>
 					<strong>Well done!</strong> The record was added!
 				</div>
+				<div id="updateSuccessAlert" class="alert alert-success" role="alert">
+					<button type="button" class="close" data-hide="alert">&times;</button>
+					<strong>Success!</strong> The record was updated!
+				</div>
 				<div id="deleteSuccessAlert" class="alert alert-success" role="alert">
 					<button type="button" class="close" data-hide="alert">&times;</button>
 					<strong>Success!</strong> The record was deleted!
@@ -87,6 +92,7 @@
 						<tr>
 							<th>Key</th>
 							<th>Value</th>
+							<th/>
 							<th><button type="button" class="btn btn-primary" onclick="refreshData()">Refresh</button></th>
 						</tr>
 					</thead>
@@ -94,5 +100,27 @@
 				</table>
 			</div>
 		</div>
+		<script id="tableRowTemplate" type="text/x-handlebars-template">
+			<tr id="viewMode{{id}}">
+				<td id="oldKey{{id}}">{{key}}</td>
+				<td id="oldValue{{id}}">{{value}}</td>
+				<td>
+					<button type="button" class="btn btn-default" onclick="showUpdateMode('{{id}}')">Edit</button>
+				</td>
+				<td>
+					<button type="button" class="btn btn-danger" onclick="deleteProcess('{{id}}')">Delete</button>
+				</td>
+			</tr>
+			<tr id="updateMode{{id}}" style="display:none;">
+				<td><input id="newKey{{id}}" type="text" value="{{key}}"/></td>
+				<td><input id="newValue{{id}}" type="text" value="{{value}}"/></td>
+				<td>
+					<button type="button" class="btn btn-success" onclick="updateRecordProcess('{{id}}')">Save</button>
+				</td>
+				<td>
+					<button type="button" class="btn btn-default" onclick="showViewMode('{{id}}')">Cancel</button>
+				</td>
+			</tr>
+		</script>
 	</body>
 </html>
