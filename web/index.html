@@ -6,8 +6,11 @@
 		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="bower_components/bootstrap3-dialog/dist/js/bootstrap-dialog.js"></script>
 		<script src="bower_components/handlebars/handlebars.js"></script>
-		<script src="index.js"></script>
-<!--		css-->
+		<script src="js/common.js"></script>
+		<script src="js/delete.js"></script>
+		<script src="js/submit.js"></script>
+		<script src="js/update.js"></script>
+		<!--css-->
 		<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
 		<link rel="stylesheet" type="text/css" href="bower_components/bootstrap3-dialog/dist/css/bootstrap-dialog.css">
 		<link rel="stylesheet" type="text/css" href="custom.css">
@@ -100,10 +103,13 @@
 				</table>
 			</div>
 		</div>
+		
+		
+		<!--Handlebars Template-->
 		<script id="tableRowTemplate" type="text/x-handlebars-template">
 			<tr id="viewMode{{id}}">
-				<td id="oldKey{{id}}">{{key}}</td>
-				<td id="oldValue{{id}}">{{value}}</td>
+				<td id="existingKey{{id}}">{{key}}</td>
+				<td id="existingValue{{id}}">{{value}}</td>
 				<td>
 					<button type="button" class="btn btn-default" onclick="showUpdateMode('{{id}}')">Edit</button>
 				</td>
@@ -115,12 +121,13 @@
 				<td><input id="newKey{{id}}" type="text" value="{{key}}"/></td>
 				<td><input id="newValue{{id}}" type="text" value="{{value}}"/></td>
 				<td>
-					<button type="button" class="btn btn-success" onclick="updateRecordProcess('{{id}}')">Save</button>
+					<button type="button" class="btn btn-success" onclick="updateProcess('{{id}}')">Save</button>
 				</td>
 				<td>
 					<button type="button" class="btn btn-default" onclick="showViewMode('{{id}}')">Cancel</button>
 				</td>
 			</tr>
 		</script>
+		<!--End of Handlebars Template-->
 	</body>
 </html>
