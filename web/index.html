@@ -79,7 +79,12 @@
 				<div class="row col-md-10">
 					<div class="form-group col-md-6">
 						<label>Key:</label>
-						<input id="key" type="text" name="key"/>
+						<select id="key" name="key">
+							<option value="default"></option>
+							<option value="NHI">Needed Household Item</option>
+							<option value="PUFB">Pick up from Blackrock</option>
+							<option value="SI">Shopping Item</option>
+						</select>
 					</div>
 					<div class="form-group col-md-6">
 						<label>Value:</label>
@@ -118,7 +123,13 @@
 				</td>
 			</tr>
 			<tr id="updateMode{{id}}" style="display:none;">
-				<td><input id="newKey{{id}}" type="text" value="{{key}}"/></td>
+				<td>
+					<select id="newKey{{id}}">
+						<option value="NHI" {{NHI_Selected}}>Needed Household Item</option>
+						<option value="PUFB" {{PUFB_Selected}}>Pick up from Blackrock</option>
+						<option value="SI" {{SI_Selected}}>Shopping Item</option>
+					</select>
+				</td>
 				<td><input id="newValue{{id}}" type="text" value="{{value}}"/></td>
 				<td>
 					<button type="button" class="btn btn-success" onclick="updateProcess('{{id}}')">Save</button>

@@ -1,6 +1,15 @@
-$(document).ready(function () {	
+$(document).ready(function () {
+	listOptions = new Object();
+	listOptions['NHI'] = 'Needed Household Item';
+	listOptions['PUFB'] = 'Pick up from Blackrock';
+	listOptions['SI'] = 'Shopping Item';
+	
+	listOptions['Needed Household Item'] = 'NHI';
+	listOptions['Pick up from Blackrock'] = 'PUFB';
+	listOptions['Shopping Item'] = 'SI';
+	
 	refreshData();
-})
+});
 
 function refreshData() {
 	console.log("Getting records...");
@@ -11,7 +20,18 @@ function refreshData() {
 		var source = $('#tableRowTemplate').html();
 		var template = Handlebars.compile(source);
 		records.forEach(function (record) {
-			var context = {key:record.key, value:record.value, id:record._id};
+			var nhi_selected = '';
+			var pufb_selected = '';
+			var si_selected = '';
+			var keyId = listOptions[record.key];
+			if (keyId === 'NHI') {
+				nhi_selected = 'selected';
+			} else if (keyId === 'PUFB') {
+				pufb_selected = 'selected';
+			} else if (keyId === 'SI') {
+				si_selected = 'selected';
+			}
+			var context = {key:record.key, keyId:listOptions[record.key], value:record.value, id:record._id, NHI_Selected:nhi_selected, PUFB_Selected:pufb_selected, SI_Selected:si_selected};
 			var html = template(context);
 			target.append(html);
 		});

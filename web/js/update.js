@@ -9,7 +9,7 @@ function showUpdateMode(id) {
 }
 
 function updateProcess(id) {
-	var newKey = $(`#newKey${id}`).val();
+	var newKey = listOptions[$(`#newKey${id}`).val()];
 	var newValue = $(`#newValue${id}`).val();
 	var oldKey = $(`#existingKey${id}`).html();
 	var oldValue = $(`#existingValue${id}`).html();
