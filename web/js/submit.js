@@ -1,5 +1,4 @@
-function submitData() {
-	showAlert('workingAlert');		
+function submitData() {	
 	var keyElement = $('#key');
 	var valueElement = $('#value');
 	var keyInput = listOptions[keyElement.val()];
@@ -8,14 +7,19 @@ function submitData() {
 		key:keyInput,
 		value:valueInput
 	};
-	postData('submit', newRecord, function (response) {
-		if (response.code === 0) {
-			showAlert('failureAlert');
-		} else if (response.code === 1) {
-			showAlert('submitSuccessAlert');
+	validateRecord(newRecord, function (valid) {
+		if (valid === true) {
+			showAlert('workingAlert');
+			postData('submit', newRecord, function (response) {
+				if (response.code === 0) {
+					showAlert('failureAlert');
+				} else if (response.code === 1) {
+					showAlert('submitSuccessAlert');
+				}
+				keyElement.val('');
+				valueElement.val('');
+				refreshData();
+			});
 		}
-		keyElement.val('');
-		valueElement.val('');
-		refreshData();
-	});
+	})
 }
