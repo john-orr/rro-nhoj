@@ -2,7 +2,7 @@ function submitData() {
 	showAlert('workingAlert');		
 	var keyElement = $('#key');
 	var valueElement = $('#value');
-	var keyInput = keyElement.val();
+	var keyInput = listOptions[keyElement.val()];
 	var valueInput = valueElement.val();
 	var newRecord = {
 		key:keyInput,
