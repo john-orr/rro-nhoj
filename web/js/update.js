@@ -21,7 +21,7 @@ function updateProcess(id) {
 			label: 'No, please cancel',
 			action: function (dialog){
 				dialog.close();
-				showViewMode(id);
+				cancelUpdate(id);
 			}
 		}, {
 			label: "Yes, I'm sure",
@@ -44,4 +44,14 @@ function updateRecord(id, key, value) {
 		}
 		refreshData();
 	});
+}
+
+function cancelUpdate(id) {
+	resetToOringinalValues(id);
+	showViewMode(id);
+}
+
+function resetToOringinalValues(id) {
+	$(`#newKey${id}`).val(listOptions[$(`#existingKey${id}`).html()]);
+	$(`#newValue${id}`).val($(`#existingValue${id}`).html());
 }
