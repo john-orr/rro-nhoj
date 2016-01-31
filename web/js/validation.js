@@ -11,8 +11,7 @@ function validateRecord(record, callback) {
 				}
 			}]
 		});
-		callback(false);
 	} else {
-		callback(true);
+		callback();
 	}
 }
