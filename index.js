@@ -2,7 +2,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-var db = mongoose.connect("mongodb://webapp:password@ds053080.mongolab.com:53080/rro-nhoj");
+var db_user = process.env.DBUSER;
+var db_pass = process.env.DBPASS;
+var db = mongoose.connect(`mongodb://${db_user}:${db_pass}@ds053080.mongolab.com:53080/rro-nhoj`);
 
 var app = express();
 var port = process.env.PORT || 7001;
