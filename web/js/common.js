@@ -1,12 +1,15 @@
 $(document).ready(function () {
 	listOptions = new Object();
+	// From form input to DB
 	listOptions['NHI'] = 'Needed Household Item';
 	listOptions['PUFB'] = 'Pick up from Blackrock';
 	listOptions['SI'] = 'Shopping Item';
-	
+	listOptions['TD'] = 'To Do';
+	// From DB to display
 	listOptions['Needed Household Item'] = 'NHI';
 	listOptions['Pick up from Blackrock'] = 'PUFB';
 	listOptions['Shopping Item'] = 'SI';
+	listOptions['To Do'] = 'TD';
 	
 	refreshData();
 });
@@ -23,6 +26,7 @@ function refreshData() {
 			var nhi_selected = '';
 			var pufb_selected = '';
 			var si_selected = '';
+			var td_selected = '';
 			var keyId = listOptions[record.key];
 			if (keyId === 'NHI') {
 				nhi_selected = 'selected';
@@ -30,8 +34,10 @@ function refreshData() {
 				pufb_selected = 'selected';
 			} else if (keyId === 'SI') {
 				si_selected = 'selected';
+			} else if (keyId === 'TD') {
+				td_selected = 'selected';
 			}
-			var context = {key:record.key, keyId:listOptions[record.key], value:record.value, id:record._id, NHI_Selected:nhi_selected, PUFB_Selected:pufb_selected, SI_Selected:si_selected};
+			var context = {key:record.key, value:record.value, id:record._id, NHI_Selected:nhi_selected, PUFB_Selected:pufb_selected, SI_Selected:si_selected, TD_Selected:td_selected};
 			var html = template(context);
 			target.append(html);
 		});
