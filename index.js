@@ -41,7 +41,7 @@ db.connection.on('connected', function () {
 	});
 	
 	app.get('/records', function (req, res) {
-		Record.find({}, function (err, records) {
+		Record.find({}).sort({key: 'desc'}).exec(function (err, records) {
 			res.json(records);
 		})
 	});
