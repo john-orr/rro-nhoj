@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 
 var db_user = process.env.DBUSER;
 var db_pass = process.env.DBPASS;
-var db = mongoose.connect(`mongodb://${db_user}:${db_pass}@ds053080.mongolab.com:53080/rro-nhoj`);
+var db = mongoose.connect(`mongodb://${db_user}:${db_pass}@ds053080.mlab.com:53080/rro-nhoj`);
 
 var app = express();
 var port = process.env.PORT || 7001;
