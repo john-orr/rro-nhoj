@@ -22,8 +22,8 @@ function submitData() {
 	});
 }
 
-$('#value').keypress(function(e) {
-    if (e.which == 13) {
+$('#value').live("keypress", function(e) {
+    if (e.keyCode == 13) {
         submitData();
     }
 });
