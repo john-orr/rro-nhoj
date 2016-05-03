@@ -22,7 +22,7 @@ function submitData() {
 	});
 }
 
-$('#value').live("keypress", function(e) {
+$('#value').on("keypress", function(e) {
     if (e.keyCode == 13) {
         submitData();
     }
